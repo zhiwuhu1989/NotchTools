@@ -2,6 +2,7 @@ package notchtools.geek.com.notchtools;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.graphics.Rect;
 import android.os.Build;
 import android.view.Window;
 
@@ -109,6 +110,19 @@ public class NotchTools implements INotchSupport{
             return 0;
         }
         return notchScreenSupport.getNotchHeight(window);
+    }
+
+    /**
+     * get notch rect
+     */
+    public Rect getNotchRect(Window window) {
+        if (notchScreenSupport == null) {
+            checkScreenSupportInit(window);
+        }
+        if (notchScreenSupport == null) {
+            return new Rect(0, 0, 0, 0);
+        }
+        return notchScreenSupport.getNotchRect(window);
     }
 
     /**

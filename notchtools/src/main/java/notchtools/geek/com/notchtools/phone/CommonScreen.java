@@ -1,6 +1,7 @@
 package notchtools.geek.com.notchtools.phone;
 
 import android.app.Activity;
+import android.graphics.Rect;
 import android.view.Window;
 
 import notchtools.geek.com.notchtools.core.AbsNotchScreenSupport;
@@ -22,6 +23,12 @@ public class CommonScreen extends AbsNotchScreenSupport {
     @Override
     public int getNotchHeight(Window window) {
         return 0;
+    }
+
+    @Override
+    public Rect getNotchRect(Window window) {
+        Rect rect = new Rect(0, 0, 0, 0) ;
+        return rect;
     }
 
     @Override

@@ -3,6 +3,7 @@ package notchtools.geek.com.notchtools.phone;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
@@ -63,12 +64,19 @@ public class HuaWeiNotchScreen extends AbsNotchScreenSupport {
             Class HwNotchSizeUtil = cl.loadClass("com.huawei.android.util.HwNotchSizeUtil");
             Method get = HwNotchSizeUtil.getMethod("getNotchSize");
             ret = (int[]) get.invoke(HwNotchSizeUtil);
+            Log.d(TAG, "getNotchHeight ret " + ret[1]);
         } catch (ClassNotFoundException e) {
         } catch (NoSuchMethodException e) {
         } catch (Exception e) {
         } finally {
             return ret[1];
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public Rect getNotchRect(Window window) {
+        return new Rect(getNotchHeight(window), 0, 0, 0);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

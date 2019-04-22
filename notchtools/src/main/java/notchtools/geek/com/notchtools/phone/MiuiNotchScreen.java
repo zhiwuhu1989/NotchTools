@@ -2,9 +2,11 @@ package notchtools.geek.com.notchtools.phone;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 import android.view.Window;
 import java.lang.reflect.Method;
 
@@ -37,23 +39,36 @@ public class MiuiNotchScreen extends AbsNotchScreenSupport {
 
         int result = 0;
         if (window == null) {
+            Log.d(TAG, "getNotchHeight window null ");
             return 0;
         }
         Context context = window.getContext();
         if (isHideNotch(window.getContext())) {
+            Log.d(TAG, "getNotchHeight hide notch context " + context);
             result = NotchStatusBarUtils.getStatusBarHeight(context);
         } else {
             result = getRealNotchHeight(context);
         }
+        Log.d(TAG, "getNotchHeight result " + result);
         return result;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public Rect getNotchRect(Window window) {
+        return new Rect(getNotchHeight(window), 0, 0, 0);
     }
 
     private int getRealNotchHeight(Context context) {
         int result = 0;
         int resourceId = context.getResources().getIdentifier("notch_height", "dimen", "android");
+        Log.d(TAG, "getRealNotchHeight resourceId " + resourceId);
         if (resourceId > 0) {
             result = context.getResources().getDimensionPixelSize(resourceId);
+        } else {
+            result = NotchStatusBarUtils.getStatusBarHeight(context);
         }
+        Log.d(TAG, "getRealNotchHeight result " + result);
         return result;
     }
 

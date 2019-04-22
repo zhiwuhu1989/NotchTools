@@ -1,6 +1,7 @@
 package notchtools.geek.com.notchtools.phone;
 
 import android.app.Activity;
+import android.graphics.Rect;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.view.Window;
@@ -35,6 +36,12 @@ public class OppoNotchScreen extends AbsNotchScreenSupport {
         }
 
         return NotchStatusBarUtils.getStatusBarHeight(window.getContext());
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public Rect getNotchRect(Window window) {
+        return new Rect(getNotchHeight(window), 0, 0, 0);
     }
 
     /**

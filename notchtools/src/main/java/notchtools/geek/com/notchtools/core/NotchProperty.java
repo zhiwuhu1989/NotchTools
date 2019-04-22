@@ -1,5 +1,7 @@
 package notchtools.geek.com.notchtools.core;
 
+import android.graphics.Rect;
+
 /**
  * 刘海信息
  * @author zhangzhun
@@ -25,6 +27,8 @@ public class NotchProperty {
      */
     private int mMarginTop;
 
+    private Rect mRect;
+
     public int geNotchHeight() {
         return mHeight;
     }
@@ -47,5 +51,13 @@ public class NotchProperty {
 
     public void setMarginTop(int mMarginTop) {
         this.mMarginTop = mMarginTop;
+    }
+
+    public void setNotchRect(Rect rect) {
+        this.mRect = rect;
+    }
+
+    public Rect getNotchRect() {
+        return mRect;
     }
 }

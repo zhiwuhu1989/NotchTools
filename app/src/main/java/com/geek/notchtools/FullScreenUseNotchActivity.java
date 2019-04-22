@@ -25,7 +25,21 @@ public class FullScreenUseNotchActivity extends BaseActivity implements OnNotchC
                 finish();
             }
         });
-        NotchTools.getFullScreenTools().fullScreenUseStatus(this, this);
+        if (Build.VERSION.SDK_INT >= 28) {
+            final FullScreenUseNotchActivity activity = this;
+            getWindow().getDecorView().setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
+                @Override
+                public WindowInsets onApplyWindowInsets(View view, WindowInsets windowInsets) {
+                    getWindow().getDecorView().setOnApplyWindowInsetsListener(null);
+                    NotchTools.getFullScreenTools().fullScreenUseStatus(activity, activity);
+                    return windowInsets;
+                }
+            });
+        }
+        else
+        {
+            NotchTools.getFullScreenTools().fullScreenUseStatus(this, this);
+        }
     }
 
     @Override

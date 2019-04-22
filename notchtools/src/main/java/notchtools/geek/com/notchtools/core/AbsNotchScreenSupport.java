@@ -50,6 +50,7 @@ public abstract class AbsNotchScreenSupport implements INotchSupport {
         if (notchCallBack != null) {
             NotchProperty notchProperty = new NotchProperty();
             notchProperty.setNotchHeight(getNotchHeight(activity.getWindow()));
+            notchProperty.setNotchRect(getNotchRect(activity.getWindow()));
             notchProperty.setNotch(isNotchScreen(activity.getWindow()));
             if (notchCallBack != null) {
                 notchCallBack.onNotchPropertyCallback(notchProperty);
@@ -61,6 +62,7 @@ public abstract class AbsNotchScreenSupport implements INotchSupport {
         if (notchCallBack != null) {
             NotchProperty notchProperty = new NotchProperty();
             notchProperty.setNotchHeight(getNotchHeight(activity.getWindow()));
+            notchProperty.setNotchRect(getNotchRect(activity.getWindow()));
             notchProperty.setNotch(isNotchScreen(activity.getWindow()));
             notchProperty.setMarginTop(marginTop);
             if (notchCallBack != null) {

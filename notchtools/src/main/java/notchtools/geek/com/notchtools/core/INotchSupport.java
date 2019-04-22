@@ -1,6 +1,7 @@
 package notchtools.geek.com.notchtools.core;
 
 import android.app.Activity;
+import android.graphics.Rect;
 import android.view.Window;
 
 
@@ -23,6 +24,11 @@ public interface INotchSupport {
      * @return
      */
     int getNotchHeight(Window window);
+
+    /**
+     * get notch rect
+     */
+    Rect getNotchRect(Window window);
 
     /**
      * 获取状态栏的高度

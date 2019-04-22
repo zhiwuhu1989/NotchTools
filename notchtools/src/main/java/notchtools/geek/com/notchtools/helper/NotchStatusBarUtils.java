@@ -3,6 +3,7 @@ package notchtools.geek.com.notchtools.helper;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -27,14 +28,19 @@ public class NotchStatusBarUtils {
      */
     public static int getStatusBarHeight(Context context) {
         if (statusBarHeight != -1) {
+            Log.d("NotchStatusBarUtils", "getStatusBarHeight statusBarHeight " + statusBarHeight);
             return statusBarHeight;
         }
         if (statusBarHeight <= 0) {
+            Log.d("NotchStatusBarUtils", "getStatusBarHeight statusBarHeight " + statusBarHeight);
             int resId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+            Log.d("NotchStatusBarUtils", "getStatusBarHeight statusBarHeight " + statusBarHeight + " resId " + resId);
             if (resId > 0) {
                 statusBarHeight = context.getResources().getDimensionPixelSize(resId);
+                Log.d("NotchStatusBarUtils", "getStatusBarHeight resId > 0 statusBarHeight " + statusBarHeight);
             }
         }
+        Log.d("NotchStatusBarUtils", "getStatusBarHeight statusBarHeight " + statusBarHeight);
         return statusBarHeight;
     }
 
